@@ -1,0 +1,1214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>haikyu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+        .read-more-state {
+            display: none;
+        }
+
+        .read-more-target {
+            opacity: 0;
+            max-height: 0;
+            font-size: 0;
+            transition: .25s ease;
+        }
+
+        .read-more-state:checked~.read-more-wrap .read-more-target {
+            opacity: 1;
+            font-size: inherit;
+            max-height: 999em;
+        }
+
+
+        .read-more-trigger {
+            cursor: pointer;
+            display: inline-block;
+            padding: 0 .5em;
+            color: #ff920d;
+            font-size: .9em;
+            line-height: 2;
+            border: 1px solid #ddd;
+            border-radius: .25em;
+        }
+
+        .linear-wipe {
+            background: linear-gradient(to right, #f6733b, #f6b671, #ffffff, #ffffff, #f6b671, #f6733b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate 12s linear infinite;
+
+        }
+
+        @keyframes animate {
+            0% {
+                background-position: 400%;
+            }
+
+            100% {
+                background-position: 0%;
+            }
+        }
+
+
+
+        a.nav-link:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        a.nav-link:active {
+            color: rgb(255, 255, 255);
+
+        }
+
+        a.nav-link {
+            color: rgb(255, 165, 112);
+            width: auto;
+            height: 100%;
+        }
+
+
+        .bar {
+            background: rgb(255, 183, 116);
+            background: linear-gradient(148deg, rgba(255, 183, 116, 1) 0%, rgba(237, 113, 32, 1) 55%, rgba(156, 63, 2, 0.9780287114845938) 72%, rgba(124, 49, 1, 0.9780287114845938) 98%);
+
+
+        }
+
+        .bg-im {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+
+        }
+
+        .bg-im::before {
+            content: "";
+            background-image: url('https://i0.wp.com/www.theoasg.com/wp-content/uploads/2016/07/Haikyuu-Shoyo.png?resize=1024%2C479&ssl=1');
+            background-size: cover;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.5;
+        }
+
+        @media only screen and (max-width: 667px) {
+
+            .postvideo {
+                width: 50vh;
+                height: fit-content;
+                font-size: 0.5rem;
+            }
+
+            .refont {
+                font-size: 0.5rem;
+            }
+
+            .paddingtb {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            h5 {
+                font-size: 1rem;
+            }
+
+            .homep {
+                max-width: 667;
+                display: flex;
+                -ms-flex-item-align: start;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar logo + nav -->
+    <nav class="nav nav-tabs flex-grow-1 text-right pt-3 bar" id="nav-tab" role="tablist">
+
+        <img id="top"
+            src="https://static.wikia.nocookie.net/haikyuu/images/e/e6/Site-logo.png/revision/latest?cb=20210615133010"
+            class="rounded float-right ps-3 mb-0" width="12%" height="auto">
+
+        <a class="nav-link  ms-auto flex-nowrap active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home"
+            role="tab" aria-controls="nav-home" aria-selected="false">HOME</a>
+        <a class="nav-link flex-nowrap" id="nav-team-tab" data-bs-toggle="tab" href="#nav-team" role="tab"
+            aria-controls="nav-team" aria-selected="true">TEAM</a>
+        <a class="nav-link flex-nowrap" id="nav-disabled-tab" data-bs-toggle="tab" href="#nav-disabled" role="tab"
+            aria-controls="nav-disabled" tabindex="-1" aria-disabled="true">MUSIC</a>
+
+    </nav>
+    <!-- ------------------ -->
+
+    <!-- active nav link -->
+    <div class="tab-content" id="nav-tabContent">
+        <!-- home page active  -->
+        <div class=" tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <!-- bg -->
+            <div class="homep bg-im d-flex flex-column justify-content-center align-items-center h-100 ">
+                <!-- post video -->
+                <center>
+                    <div class="postvideo container">
+                        <section class=" mx-auto my-5 ">
+                            <div class="card shadow-lg">
+                                <div class="card-body d-flex flex-row ">
+                                    <img src="https://haikyu.jp/core_sys/images/main/s5/kv_s5b.webp"
+                                        class="rounded-circle me-3" height="50px" width="50px" alt="avatar" />
+                                    <div>
+                                        <h5 class="card-title font-weight-bold mb-2">Haikyuu officia</h5>
+                                        <p class="card-text"><i class="far fa-clock pe-2"></i>2 years ago..</p>
+                                    </div>
+                                </div>
+                                <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+                                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/5V4SQVBpnnU"
+                                        title="YouTube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                                <div class="card-body ">
+                                    <div class="d-flex justify-content-between ">
+                                        <a class="btn btn-link link-danger p-md-1 my-1" data-mdb-toggle="collapse"
+                                            href="#about" role="button" aria-expanded="false"
+                                            aria-controls="collapseContent">About ?</a>
+                                        <div>
+                                            <i class="fas fa-share-alt text-muted p-md-1 my-1 me-2"
+                                                data-mdb-toggle="tooltip" data-mdb-placement="top"
+                                                title="Share this post"></i>
+                                            <i class="fas fa-heart text-muted p-md-1 my-1 me-0"
+                                                data-mdb-toggle="tooltip" data-mdb-placement="top"
+                                                title="I like it"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+                </center>
+
+
+            </div>
+            <!-- bg2 -->
+            <div class="container py-6 bg-dark text-center " style="max-width: 100%; padding-bottom: 5vh;">
+                <h1 class="linear-wipe p-4 ">Welcome to the Haikyu fanpage!! </h1>
+                <h4 class="text-light blockquote-footer">"I may be small, but I can jump!"</h4>
+                <!-- About -->
+                <div id="about" class="p-md-5 py-2 shadow font-monospace d-flex row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+
+                    <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                        <img class="shadow-lg mx-auto "
+                            src="https://static.wikia.nocookie.net/haikyuu/images/a/a7/Karasuno_Oficial_S4-P2.jpg/revision/latest?cb=20200808231027&path-prefix=es"
+                            width="60%">
+                    </div>
+                    <div class="text-wrap refont text-start col-lg-6" style="padding: 5%;">
+                        <h3 class="text-center"><br>About Haikyuu</h3>
+                        <hr class="hr hr-blurry" />
+                        Shōyō Hinata, after seeing a volleyball match, aims to become the next "Little Giant" and thus
+                        joins his middle school volleyball club. After finding new members, he sets out for the middle
+                        school tournament, where he crosses paths with a formidable school with the "King of the Upper
+                        Court," Tobio Kageyama. Although his team lost, Hinata is still determined to aim for the top
+                        and exact revenge on Kageyama. Upon entering high school, he receives the biggest surprise: He
+                        and Kageyama are in the same high school volleyball club!
+                    </div>
+                </div>
+            </div>
+
+            <!-- On Air -->
+            <div class="container-fluid py-1 font-monospace d-flex flex-row justify-content-center">
+                <div class="text-start pt-3 pb-3" style="width: 75vw;">
+                    <h3 class="text-center ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                            class="bi bi-camera-reels " viewBox="0 0 16 16">
+                            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0z" />
+                            <path
+                                d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7zm6 8.73V7.27l-3.5 1.555v4.35l3.5 1.556zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1z" />
+                            <path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg> - ON AIR (TH)
+                    </h3>
+                    <hr class="hr hr-blurry" />
+
+                    <div class="row d-flex justify-content-center" style="white-space: nowrap;">
+                        <div class="col-md-3 p-0" style="width: 110px;">
+                            <a href="https://www.iq.com/album/1m26il1p739">
+                                <button type="button" " class=" btn btn-outline-success "><svg xmlns="
+                                    http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                                    </svg> iQIYI
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-md-3 p-0" style="width: 140px;">
+                            <a href="https://www.bilibili.tv/th/search-result?q=ไฮคิว!!%20คู่ตบฟ้าประทาน">
+                                <button type="button" class="btn btn-outline-primary "><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                                    </svg> Bilibili</button>
+                            </a>
+                        </div>
+                        <div class="col-md-3 p-0" style="width: 100px;">
+                            <a href="https://wetv.vip/th/search?q=ไฮคิว%21%21+คู่ตบฟ้าประทาน">
+                                <button type="button" class="btn btn-outline-info "><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                                    </svg> WeTV</button>
+                            </a>
+                        </div>
+                        <div class="col-md-3 p-0" style="width: 110px;">
+                            <a href="https://pops.tv/th/series/haikyu-5fd0aed1263439003432243b">
+                                <button type="button" class="btn btn-outline-warning "><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+                                    </svg> Pops</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- ------------------ -->
+
+
+        <!-- TEAM -->
+        <div class="tab-pane fade " id="nav-team" role="tabpanel" aria-labelledby="nav-disabled-tab">
+            <!-- link team -->
+            <div class="p-4 container bg-ligth text-center d-flex justify-content-evenlyd-flex justify-content-evenly "
+                style="max-width: 100%; height: 12vh; ">
+
+                <a href="#karasuno"><button type="button" class="btn btn-outline-dark refont"> Karasuno</button></a>
+                <a href="#nekoma"><button type="button" class="btn btn-outline-dark refont"> Nekoma</button></a>
+                <a href="#aobajohsai"><button type="button" class="btn btn-outline-dark refont"> Aoba johsai</button></a>
+                <a href="#datetech"><button type="button" class="btn btn-outline-dark refont"> Date tech</button></a>
+            </div>
+
+
+            <!-- Karasuno -->
+            <!-- 1 -->
+            <div class="refont bg-dark p-4 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height: 80vh;">
+                <h1 id="karasuno" class="linear-wipe"> Karasuno</h1>
+                <!-- Academics -->
+                <div class="px-2 shadow font-monospace d-flex justify-content-center row"
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <img class="align-self-center mx-5 pt-5 my-2 pb-2 "
+                        src="https://static.wikia.nocookie.net/haikyuu/images/a/a7/Karasuno_Oficial_S4-P2.jpg/revision/latest?cb=20200808231027&path-prefix=es"
+                        style="width: 50vw;">
+                    <div class="text-start pb-5 px-3 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Academics</h5>
+                        <hr class="hr hr-blurry" />
+                        Each grade has five classes, with classes 4 and 5 being college preparatory classes. Periods are
+                        50 minutes long, with a 10-minute break in between. Subjects taught include English, modern
+                        Japanese literature, math, and physical education. After graduation, students generally either
+                        continue on to higher education or work.
+                        <br><br>
+                        The passing grade for exams is 40 points. Students who fail their final exams must take weekend
+                        supplementary classes and a supplementary exam for each failed subject; these may sometimes be
+                        held during summer vacation. The passing grade for supplementary exams is 80 points, and
+                        students must take them until they pass.
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="refont bg-light px-5 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height:30vh;">
+                <!-- Volleyball Club -->
+                <div class="px-2  font-monospace d-flex flex-row justify-content-center " style="text-indent: 2rem;">
+                    <div class="text-start mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Volleyball Club</h5>
+                        <hr class="hr hr-blurry " />
+                        <!-- volleyball-club-content -->
+                        <div class="w-100">
+                            <div class="p-4" style="border:1px solid rgb(255, 140, 0); width:100%;">
+                                The school's Boys' Volleyball Club was founded many years ago and has often been
+                                associated with crows due to the school's name. Its banner, in fact, reads "Fly" which
+                                alludes to crows. It was said that Coach Ikkei Ukai had a ferocious pack of crows during
+                                Karasuno's glory days.
+
+                                <span class="d-none" id="showText">
+                                    <br><br>
+                                    As a former powerhouse of Miyagi, Karasuno has represented the prefecture at the
+                                    Spring High National Tournament nine times. One of those occasions was under the
+                                    guidance of Coach Ikkei Ukai and Tenma Udai, also known as the "Small Giant"
+                                    ("Little/Tiny Giant" in the anime), and was famous throughout Miyagi. However, after
+                                    the initial success, Karasuno failed to pass its prefecture's preliminaries in
+                                    future tournaments and therefore received the derogatory nicknames "The Fallen
+                                    Champions" and "The Flightless Crows." It wasn't until five years later did the team
+                                    finally return to nationals.
+                                    <br><br>
+                                    For a while, Karasuno did not have a coach due to Ukai's hospitalization after a few
+                                    months of coaching the previous year. Daichi Sawamura then took on both the captain
+                                    and the coach's duties until Ukai's grandson, Keishin Ukai, became the new coach.
+                                    The managers of the team consist of Kiyoko Shimizu, a third-year and the original
+                                    manager, and Hitoka Yachi, a first-year recruited by Kiyoko after the first
+                                    tournament.
+                                    <br><br>
+                                    A team photo with the official banner in the back.
+                                    The main starting line-up is composed of Daichi Sawamura, Asahi Azumane, Ryūnosuke
+                                    Tanaka, Yū Nishinoya, Shōyō Hinata, Tobio Kageyama, and Kei Tsukishima. Karasuno is
+                                    currently famous for its quick attack (performed by Kageyama and Hinata) and its
+                                    unique members: Kitagawa Daiichi Junior High's "King of the Court," Kageyama;
+                                    Chidoriyama's champion libero, Nishinoya; and the 164cm-tall middle blocker, Hinata.
+                                    <br><br>
+                                    Karasuno's main rivals within the Miyagi Prefecture are Aoba Johsai High, Date Tech
+                                    High, and Shiratorizawa Academy. The club's "destined" rival is Nekoma High, which
+                                    Karasuno has always lost to. Because their animal representatives (cat and crow) are
+                                    usually found by the dumpster, their matches are called the "Battle at the Garbage
+                                    Dump." (In the anime it is referred to as 'The Trashcan Showdown.')
+                                    <br><br>
+                                    Karasuno's strongest attribute is its offensive power, with a heavy focus on attacks
+                                    such as the quick strike, pipe-line, and synchronized attacks using tempo. It also
+                                    utilizes uncommon techniques like the Calculated One-Point Two-Setter, the jump
+                                    float serve, and a libero toss to throw off opponents.
+                                    <br><br>
+                                    They won the 2012 Miyagi Qualifiers Tournament against Shiratorizawa and advanced to
+                                    the Spring Nationals. When they got there, they managed to rank in the top 8 of all
+                                    of Japan after losing to Kamomedai.
+                                    <br><br>
+                                    They earned two consecutive participations at the Tournament for the next two years.
+                                    In 2014, they placed in the Top 16 after losing in the third round to Inarizaki. In
+                                    2015, they played on center court against Itachiyama in the semifinals, and lost,
+                                    ranking third nationally.
+                                </span>
+
+                            </div>
+                            <button class="btn btn-danger my-4" onclick="show()">read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="refont font-monospace bg-dark px-5 container text-center d-flex flex-column"
+                style="max-width: 100%; min-height:30vh;">
+
+                <h5 class="align-self-center w-100 pb-3"
+                    style="-webkit-text-fill-color: #f6733b; border-bottom: 1px solid white;"><br>Charecter</h5>
+                <!-- Charecter -->
+                <div class="pb-3 d-flex row justify-content-evenly">
+                    <div class="col-sm-3 my-2">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/0/07/Daichi.png/revision/latest/scale-to-width-down/142?cb=20200424080002"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Daichi Sawamura</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/d/d4/Sugawara_1.png/revision/latest/scale-to-width-down/142?cb=20200424080020"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Kōshi Sugawara</h6>
+                        </div>
+                    </div>
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/a/a0/Asahi_2.png/revision/latest/scale-to-width-down/142?cb=20200424080121"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Asahi Azumane</h6>
+                        </div>
+                    </div>
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/4/46/Nishinoya_s4-e11-1.png/revision/latest/scale-to-width-down/142?cb=20200908065003"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Yū
+                                Nishinoya</h6>
+                        </div>
+                    </div>
+
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/2/21/Tanaka_1.png/revision/latest/scale-to-width-down/142?cb=20200424075622"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Ryūnosuke Tanaka</h6>
+                        </div>
+                    </div>
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/0/04/Ennoshita_1.png/revision/latest/scale-to-width-down/142?cb=20200424075529"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Chikara Ennoshita</h6>
+                        </div>
+                    </div>
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/5/51/Hisashi_Kinoshita2.png/revision/latest/scale-to-width-down/142?cb=20200310190930"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Hisashi Kinoshita</h6>
+                        </div>
+                    </div>
+                    <div class="my-2 col-sm-3">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/3/3b/Kazuhito_Narita.png/revision/latest/scale-to-width-down/142?cb=20200310194910"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Kazuhito Narita</h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Nekoma -->
+            <!-- 1 -->
+            <div class="refont bg-dark p-4 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height: 80vh;">
+                <h1 id="nekoma" class="linear-wipe"> Nekoma</h1>
+                <!-- Academics -->
+                <div class="px-2 shadow font-monospace d-flex row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <img class="align-self-center mx-5 my-2 pb-2 "
+                        src="https://pic-bstarstatic.akamaized.net/ugc/55d2b7902add9cb42327e4796ce276d651dd832b.jpg"
+                        width="20%">
+                    <div class="text-start pb-5 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Academics</h5>
+                        <hr class="hr hr-blurry" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ab est quia eaque consectetur,
+                        minima et sapiente saepe quaerat non rem sit, molestiae blanditiis illum excepturi tenetur ipsum
+                        magni accusantium?
+                        Rerum, tempore adipisci! Officia sunt a saepe dolores mollitia, magnam vel quo perspiciatis
+                        blanditiis inventore recusandae sit consequatur corporis asperiores obcaecati repudiandae
+                        voluptatem. Porro ipsum quod inventore dicta earum debitis!
+                        <br><br>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi ipsa reprehenderit
+                        est, laborum voluptates vel soluta omnis, dolorum aut aspernatur iusto voluptate expedita sint,
+                        harum reiciendis eligendi maiores amet.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore in quia corrupti
+                        similique, id magnam dolore ratione! Eius alias error assumenda! Maxime vitae, ea minima nostrum
+                        enim maiores quae.
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="refont bg-light px-5 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height:30vh;">
+                <!-- Volleyball Club -->
+                <div class="px-2  font-monospace d-flex flex-row justify-content-center " style="text-indent: 2rem;">
+                    <div class="text-start mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Volleyball Club</h5>
+                        <hr class="hr hr-blurry " />
+                        <!-- volleyball-club-content -->
+                        <div class="w-100">
+                            <div class="p-4" style="border:1px solid rgb(255, 140, 0);">
+                                The school's Boys' Volleyball Club was founded many years ago and has often been
+                                associated with crows due to the school's name. Its banner, in fact, reads "Fly" which
+                                alludes to crows. It was said that Coach Ikkei Ukai had a ferocious pack of crows during
+                                Karasuno's glory days.
+
+                                <span class="d-none" id="showTextt">
+                                    <br><br>
+                                    As a former powerhouse of Miyagi, Karasuno has represented the prefecture at the
+                                    Spring High National Tournament nine times. One of those occasions was under the
+                                    guidance of Coach Ikkei Ukai and Tenma Udai, also known as the "Small Giant"
+                                    ("Little/Tiny Giant" in the anime), and was famous throughout Miyagi. However, after
+                                    the initial success, Karasuno failed to pass its prefecture's preliminaries in
+                                    future tournaments and therefore received the derogatory nicknames "The Fallen
+                                    Champions" and "The Flightless Crows." It wasn't until five years later did the team
+                                    finally return to nationals.
+                                    <br><br>
+                                    For a while, Karasuno did not have a coach due to Ukai's hospitalization after a few
+                                    months of coaching the previous year. Daichi Sawamura then took on both the captain
+                                    and the coach's duties until Ukai's grandson, Keishin Ukai, became the new coach.
+                                    The managers of the team consist of Kiyoko Shimizu, a third-year and the original
+                                    manager, and Hitoka Yachi, a first-year recruited by Kiyoko after the first
+                                    tournament.
+                                    <br><br>
+                                    A team photo with the official banner in the back.
+                                    The main starting line-up is composed of Daichi Sawamura, Asahi Azumane, Ryūnosuke
+                                    Tanaka, Yū Nishinoya, Shōyō Hinata, Tobio Kageyama, and Kei Tsukishima. Karasuno is
+                                    currently famous for its quick attack (performed by Kageyama and Hinata) and its
+                                    unique members: Kitagawa Daiichi Junior High's "King of the Court," Kageyama;
+                                    Chidoriyama's champion libero, Nishinoya; and the 164cm-tall middle blocker, Hinata.
+                                    <br><br>
+                                    Karasuno's main rivals within the Miyagi Prefecture are Aoba Johsai High, Date Tech
+                                    High, and Shiratorizawa Academy. The club's "destined" rival is Nekoma High, which
+                                    Karasuno has always lost to. Because their animal representatives (cat and crow) are
+                                    usually found by the dumpster, their matches are called the "Battle at the Garbage
+                                    Dump." (In the anime it is referred to as 'The Trashcan Showdown.')
+                                    <br><br>
+                                    Karasuno's strongest attribute is its offensive power, with a heavy focus on attacks
+                                    such as the quick strike, pipe-line, and synchronized attacks using tempo. It also
+                                    utilizes uncommon techniques like the Calculated One-Point Two-Setter, the jump
+                                    float serve, and a libero toss to throw off opponents.
+                                    <br><br>
+                                    They won the 2012 Miyagi Qualifiers Tournament against Shiratorizawa and advanced to
+                                    the Spring Nationals. When they got there, they managed to rank in the top 8 of all
+                                    of Japan after losing to Kamomedai.
+                                    <br><br>
+                                    They earned two consecutive participations at the Tournament for the next two years.
+                                    In 2014, they placed in the Top 16 after losing in the third round to Inarizaki. In
+                                    2015, they played on center court against Itachiyama in the semifinals, and lost,
+                                    ranking third nationally.
+                                </span>
+
+                            </div>
+                            <button class="btn btn-danger my-4" onclick="showw()">read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="refont font-monospace bg-dark px-5 container text-center d-flex flex-column"
+                style="max-width: 100%; min-height:30vh;">
+
+                <h5 class="align-self-center w-100 pb-3"
+                    style="-webkit-text-fill-color: #f6733b; border-bottom: 1px solid white;"><br>Charecter</h5>
+                <!-- Charecter -->
+                <div class="pb-3 d-flex row justify-content-evenly">
+                    <div class="col-sm-3 my-2">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/2/2b/Kuroo_1.png/revision/latest/scale-to-width-down/142?cb=20200426113814"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Tetsurō Kuroo</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/3/30/Kai2020..png/revision/latest/scale-to-width-down/142?cb=20200316210557"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Nobuyuki Kai</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/b/b7/Yaku_OVA.png/revision/latest/scale-to-width-down/142?cb=20200422165446"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Morisuke Yaku</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class=" card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/6/64/Yamamoto2020sc.png/revision/latest/scale-to-width-down/142?cb=20200316211126"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Taketora Yamamoto</h6>
+                        </div>
+                    </div>
+
+                    <div class="pb-3 d-flex row ">
+                        <div class="col-sm-3 my-2">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/8/85/Kenma2020.png/revision/latest/scale-to-width-down/142?cb=20200316210637"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Kenma Kozume</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/5/5b/Fukunagak.png/revision/latest/scale-to-width-down/142?cb=20200312191141"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Shōhei Fukunaga</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/c/c6/So2020.png/revision/latest/scale-to-width-down/142?cb=20200316204544"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Sō Inuoka</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/0/05/Teshiro_1.png/revision/latest/scale-to-width-down/142?cb=20200426113922"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Tamahiko Teshiro</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aoba Johsai -->
+            <!-- 1 -->
+            <div class="refont bg-dark p-4 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height: 80vh;">
+                <h1 id="aobajohsai" class="linear-wipe"> Aoba Johsai</h1>
+                <!-- Academics -->
+                <div class="px-2 shadow font-monospace d-flex row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <img class="align-self-center mx-5 my-2 pb-2 "
+                        src="https://64.media.tumblr.com/888b85818021461c67d2392ebf5eaaca/2c2a6a7f86ddf9f9-36/s500x750/9504bf3b1cc0cabeca85902b0c19df89e5aed717.png"
+                        width="40%">
+                    <div class="text-start pb-5 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Academics</h5>
+                        <hr class="hr hr-blurry" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ab est quia eaque consectetur,
+                        minima et sapiente saepe quaerat non rem sit, molestiae blanditiis illum excepturi tenetur ipsum
+                        magni accusantium?
+                        Rerum, tempore adipisci! Officia sunt a saepe dolores mollitia, magnam vel quo perspiciatis
+                        blanditiis inventore recusandae sit consequatur corporis asperiores obcaecati repudiandae
+                        voluptatem. Porro ipsum quod inventore dicta earum debitis!
+                        <br><br>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi ipsa reprehenderit
+                        est, laborum voluptates vel soluta omnis, dolorum aut aspernatur iusto voluptate expedita sint,
+                        harum reiciendis eligendi maiores amet.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore in quia corrupti
+                        similique, id magnam dolore ratione! Eius alias error assumenda! Maxime vitae, ea minima nostrum
+                        enim maiores quae.
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="refont bg-light px-5 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height:30vh;">
+                <!-- Volleyball Club -->
+                <div class="px-2  font-monospace d-flex flex-row justify-content-center " style="text-indent: 2rem;">
+                    <div class="text-start mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Volleyball Club</h5>
+                        <hr class="hr hr-blurry " />
+                        <!-- volleyball-club-content -->
+                        <div class="w-100">
+                            <div class="p-4" style="border:1px solid rgb(255, 140, 0);">
+                                The school's Boys' Volleyball Club was founded many years ago and has often been
+                                associated with crows due to the school's name. Its banner, in fact, reads "Fly" which
+                                alludes to crows. It was said that Coach Ikkei Ukai had a ferocious pack of crows during
+                                Karasuno's glory days.
+
+                                <span class="d-none" id="showTexttt">
+                                    <br><br>
+                                    As a former powerhouse of Miyagi, Karasuno has represented the prefecture at the
+                                    Spring High National Tournament nine times. One of those occasions was under the
+                                    guidance of Coach Ikkei Ukai and Tenma Udai, also known as the "Small Giant"
+                                    ("Little/Tiny Giant" in the anime), and was famous throughout Miyagi. However, after
+                                    the initial success, Karasuno failed to pass its prefecture's preliminaries in
+                                    future tournaments and therefore received the derogatory nicknames "The Fallen
+                                    Champions" and "The Flightless Crows." It wasn't until five years later did the team
+                                    finally return to nationals.
+                                    <br><br>
+                                    For a while, Karasuno did not have a coach due to Ukai's hospitalization after a few
+                                    months of coaching the previous year. Daichi Sawamura then took on both the captain
+                                    and the coach's duties until Ukai's grandson, Keishin Ukai, became the new coach.
+                                    The managers of the team consist of Kiyoko Shimizu, a third-year and the original
+                                    manager, and Hitoka Yachi, a first-year recruited by Kiyoko after the first
+                                    tournament.
+                                    <br><br>
+                                    A team photo with the official banner in the back.
+                                    The main starting line-up is composed of Daichi Sawamura, Asahi Azumane, Ryūnosuke
+                                    Tanaka, Yū Nishinoya, Shōyō Hinata, Tobio Kageyama, and Kei Tsukishima. Karasuno is
+                                    currently famous for its quick attack (performed by Kageyama and Hinata) and its
+                                    unique members: Kitagawa Daiichi Junior High's "King of the Court," Kageyama;
+                                    Chidoriyama's champion libero, Nishinoya; and the 164cm-tall middle blocker, Hinata.
+                                    <br><br>
+                                    Karasuno's main rivals within the Miyagi Prefecture are Aoba Johsai High, Date Tech
+                                    High, and Shiratorizawa Academy. The club's "destined" rival is Nekoma High, which
+                                    Karasuno has always lost to. Because their animal representatives (cat and crow) are
+                                    usually found by the dumpster, their matches are called the "Battle at the Garbage
+                                    Dump." (In the anime it is referred to as 'The Trashcan Showdown.')
+                                    <br><br>
+                                    Karasuno's strongest attribute is its offensive power, with a heavy focus on attacks
+                                    such as the quick strike, pipe-line, and synchronized attacks using tempo. It also
+                                    utilizes uncommon techniques like the Calculated One-Point Two-Setter, the jump
+                                    float serve, and a libero toss to throw off opponents.
+                                    <br><br>
+                                    They won the 2012 Miyagi Qualifiers Tournament against Shiratorizawa and advanced to
+                                    the Spring Nationals. When they got there, they managed to rank in the top 8 of all
+                                    of Japan after losing to Kamomedai.
+                                    <br><br>
+                                    They earned two consecutive participations at the Tournament for the next two years.
+                                    In 2014, they placed in the Top 16 after losing in the third round to Inarizaki. In
+                                    2015, they played on center court against Itachiyama in the semifinals, and lost,
+                                    ranking third nationally.
+                                </span>
+
+                            </div>
+                            <button class="btn btn-danger my-4" onclick="showww()">read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="refont font-monospace bg-dark px-5 container text-center d-flex flex-column"
+                style="max-width: 100%; min-height:30vh;">
+
+                <h5 class="align-self-center w-100 pb-3"
+                    style="-webkit-text-fill-color: #f6733b; border-bottom: 1px solid white;"><br>Charecter</h5>
+                <!-- Charecter -->
+                <div class="pb-3 d-flex row justify-content-evenly">
+                    <div class="col-sm-3 my-2">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/9/98/Ddb3f2ae51fa0437ff202d6b1041b5c8.jpg/revision/latest/scale-to-width-down/142?cb=20180424163942"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Tōru Oikawa</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/1/1a/CroppedIssei.png/revision/latest/scale-to-width-down/142?cb=20160119212040"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Issei Matsukawa</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/a/ac/Kindaichi.png/revision/latest/scale-to-width-down/142?cb=20200423101113"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Yūtarō Kindaichi</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/2/27/Hanamaki_2.png/revision/latest/scale-to-width-down/142?cb=20200510060308"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Takahiro Hanamaki</h6>
+                        </div>
+                    </div>
+
+                    <div class="pb-3 d-flex row ">
+                        <div class="col-sm-3 my-2">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/e/e1/Iwaizumi_2.png/revision/latest/scale-to-width-down/142?cb=20200430140409"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Hajime Iwaizumi</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/b/b2/Kunimi_2.png/revision/latest/scale-to-width-down/142?cb=20200430140707"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Sō Inuoka</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/c/cb/CroppedWatari.png/revision/latest/scale-to-width-down/142?cb=20160119212112"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Shinji Watari</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Tech -->
+            <!-- 1 -->
+            <div class="refont bg-dark p-4 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height: 80vh;">
+                <h1 id="datetech" class="linear-wipe"> Date Tech</h1>
+                <!-- Academics -->
+                <div class="px-2 shadow font-monospace d-flex row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <img class="align-self-center mx-5 my-2 pb-2 "
+                        src="https://64.media.tumblr.com/06b937adb8f8ea372484a2fdbd8b18d3/b232b995f1260920-91/s1280x1920/8457e7d3b05aaa2f6bf31a91377fea28894a83b6.png"
+                        width="40%">
+                    <div class="text-start pb-5 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Academics</h5>
+                        <hr class="hr hr-blurry" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ab est quia eaque consectetur,
+                        minima et sapiente saepe quaerat non rem sit, molestiae blanditiis illum excepturi tenetur ipsum
+                        magni accusantium?
+                        Rerum, tempore adipisci! Officia sunt a saepe dolores mollitia, magnam vel quo perspiciatis
+                        blanditiis inventore recusandae sit consequatur corporis asperiores obcaecati repudiandae
+                        voluptatem. Porro ipsum quod inventore dicta earum debitis!
+                        <br><br>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor excepturi ipsa reprehenderit
+                        est, laborum voluptates vel soluta omnis, dolorum aut aspernatur iusto voluptate expedita sint,
+                        harum reiciendis eligendi maiores amet.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid labore in quia corrupti
+                        similique, id magnam dolore ratione! Eius alias error assumenda! Maxime vitae, ea minima nostrum
+                        enim maiores quae.
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="refont bg-light px-5 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height:30vh;">
+                <!-- Volleyball Club -->
+                <div class="px-2  font-monospace d-flex flex-row justify-content-center " style="text-indent: 2rem;">
+                    <div class="text-start mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Volleyball Club</h5>
+                        <hr class="hr hr-blurry " />
+                        <!-- volleyball-club-content -->
+                        <div class="w-100">
+                            <div class="p-4" style="border:1px solid rgb(255, 140, 0);">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga consequatur corporis
+                                blanditiis possimus, deleniti, iure iste accusantium labore corrupti quod itaque vero
+                                incidunt quia. Praesentium vero dicta vel omnis modi?
+                                <span class="d-none" id="showTextttt">
+                                    <br><br>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae officia,
+                                    rerum, illum quam beatae dolore consectetur ut enim accusamus magni nulla at ullam
+                                    doloremque laboriosam similique officiis, soluta commodi. Eveniet?
+                                    Laudantium tempore, dolorem quod ex cum obcaecati atque iste facere incidunt quo
+                                    facilis eveniet suscipit earum laborum perferendis asperiores dolorum accusamus
+                                    vitae hic veniam culpa enim vero omnis magni? Amet.
+                                    Laboriosam aliquam ea suscipit quaerat unde? Magnam illum possimus velit aperiam
+                                    voluptate voluptates aliquid eligendi aut necessitatibus voluptatem enim veniam
+                                    dolores, numquam vitae, harum sequi ducimus optio, cumque non quo!
+                                    Facere accusantium eveniet atque minima dolores, quas cum? Architecto eveniet maxime
+                                    possimus. Nemo earum quaerat at quod omnis reiciendis odit nobis neque nihil, rem
+                                    sequi vitae quas veniam provident optio?
+                                    Expedita veritatis assumenda repellendus porro ducimus temporibus eligendi nemo
+                                    cumque illo repellat dolor, repudiandae veniam libero vel debitis, aspernatur
+                                    dolorem praesentium nisi fugit culpa necessitatibus. At, maxime! Amet, magnam
+                                    molestias.
+                                    <br><br>
+                                    For a while, Karasuno did not have a coach due to Ukai's hospitalization after a few
+                                    months of coaching the previous year. Daichi Sawamura then took on both the captain
+                                    and the coach's duties until Ukai's grandson, Keishin Ukai, became the new coach.
+                                    The managers of the team consist of Kiyoko Shimizu, a third-year and the original
+                                    manager, and Hitoka Yachi, a first-year recruited by Kiyoko after the first
+                                    tournament.
+
+                                </span>
+
+                            </div>
+                            <button class="btn btn-danger my-4" onclick="showwww()">read more</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="refont font-monospace bg-dark px-5 container text-center d-flex flex-column"
+                style="max-width: 100%; min-height:30vh;">
+
+                <h5 class="align-self-center w-100 pb-3"
+                    style="-webkit-text-fill-color: #f6733b; border-bottom: 1px solid white;"><br>Charecter</h5>
+                <!-- Charecter -->
+                <div class="pb-3 d-flex row justify-content-evenly">
+                    <div class="col-sm-3 my-2">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/a/a4/Yasushi_Kamasaki.png/revision/latest/scale-to-width-down/142?cb=20200310165454"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Yasushi Kamasaki</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/2/29/Kaname_Moniwa.png/revision/latest/scale-to-width-down/142?cb=20200310165414"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Kaname Moniwa</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/c/c4/Takehito_Sasaya.png/revision/latest/scale-to-width-down/142?cb=20200310164745"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Takehito Sasaya</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 my-2 ">
+                        <div class="card mx-3 " style="width:100%; ">
+                            <img class="card-img-top"
+                                src="https://static.wikia.nocookie.net/haikyuu/images/c/ca/Aone_1.png/revision/latest/scale-to-width-down/142?cb=20200424080244"
+                                alt="Card image" style="width:100%">
+                            <h6 class="card-title mt-3" style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">
+                                Takanobu Aone</h6>
+                        </div>
+                    </div>
+
+                    <div class="pb-3 d-flex row ">
+                        <div class="col-sm-3 my-2">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/8/81/Futakuchi.png/revision/latest/scale-to-width-down/142?cb=20200424080203"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Kenji Futakuchi</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/8/88/Obara_1.png/revision/latest/scale-to-width-down/142?cb=20210630051215"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Yutaka Obara</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 my-2 ">
+                            <div class="card mx-3 " style="width:100%; ">
+                                <img class="card-img-top"
+                                    src="https://static.wikia.nocookie.net/haikyuu/images/3/3b/Koganegawa_2.png/revision/latest/scale-to-width-down/142?cb=20200424080346"
+                                    alt="Card image" style="width:100%">
+                                <h6 class="card-title mt-3"
+                                    style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">Kanji Koganegawa</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- music page -->
+        <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab">
+            <div class="bg-dark p-4 container text-center d-flex  flex-column"
+                style="max-width: 100%; min-height: 80vh;">
+                <h1 id="karasuno" class="linear-wipe"> Karasuno</h1>
+                <!-- Academics -->
+                <div class="px-2 shadow font-monospace d-flex flex-row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <div class="text-start pb-5 mx-4 refont">
+                        <h5 class="text-center " style="-webkit-text-fill-color: #f6733b;"><br>Original Soundtracks</h5>
+                        <hr class="hr hr-blurry " />
+                        Each season of the anime has seen a corresponding original soundtrack release. These soundtracks
+                        were all composed by Yuki Hayashi and Asami Tachibana, and each was produced and distributed by
+                        Toho Animation Records.
+
+                    </div>
+                </div>
+
+                <div class="mt-3 px-2 shadow font-monospace d-flex flex-row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <div class="text-start pb-5 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Season One</h5>
+                        <hr class="hr hr-blurry" />
+                        <div class="d-flex flex-row justify-content-evenlyd-flex justify-content-evenly">
+                            <div class="my-2">
+                                <div class="card" style="width:100%; ">
+                                    <img class="card-img-top"
+                                        src="https://static.wikia.nocookie.net/haikyuu/images/a/a3/Haikyuu_OST_CD_1_Cover.jpg/revision/latest/scale-to-width-down/185?cb=20150524075707"
+                                        alt="Card image" style="width:100%">
+                                    <h6 class="card-title mt-3"
+                                        style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">TV Anime "Haikyū!!"
+                                        Original Soundtrack Vol.1</h6>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <div class="card " style="width:100%; ">
+                                    <img class="card-img-top"
+                                        src="https://static.wikia.nocookie.net/haikyuu/images/6/66/Haikyuu_OST_CD_2_Cover.jpg/revision/latest/scale-to-width-down/185?cb=201506120718577"
+                                        alt="Card image" style="width:100%">
+                                    <h6 class="card-title mt-3"
+                                        style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">TV Anime "Haikyū!!"
+                                        Original Soundtrack Vol.2</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 px-5 text-start align-self-center refont">
+                            consists of two single CD volumes that contain all the music that appeared in Haikyū!!
+                            season one. Volume 1 was released on November 19, 2014 and Volume 2 was released on December
+                            17, 2014.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3 px-2 shadow font-monospace d-flex flex-row justify-content-center "
+                    style="text-indent: 2rem; background-color: white; border-radius: 3rem;">
+                    <div class="text-start pb-5 mx-4">
+                        <h5 class="text-center" style="-webkit-text-fill-color: #f6733b;"><br>Season Two</h5>
+                        <hr class="hr hr-blurry" />
+                        <div class="d-flex flex-row justify-content-evenlyd-flex justify-content-evenly">
+                            <div class="my-2 ">
+                                <div class="card " style="width:100%; ">
+                                    <img class="card-img-top"
+                                        src="https://static.wikia.nocookie.net/haikyuu/images/e/ed/HQ_S2_OST_Vol.1.jpg/revision/latest/scale-to-width-down/185?cb=20160303003723"
+                                        alt="Card image" style="width:100%">
+                                    <h6 class="card-title mt-3"
+                                        style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">TV Anime "Haikyū!!
+                                        Second Season" Original Soundtrack Vol.1</h6>
+                                </div>
+                            </div>
+                            <div class="my-2">
+                                <div class="card " style="width:100%; ">
+                                    <img class="card-img-top"
+                                        src="https://static.wikia.nocookie.net/haikyuu/images/6/64/HQ_S2_OST_Vol.2.jpg/revision/latest/scale-to-width-down/185?cb=20160303004401"
+                                        alt="Card image" style="width:100%">
+                                    <h6 class="card-title mt-3"
+                                        style="-webkit-text-fill-color: #96421e; font-size: 0.5rem;">TV Anime "Haikyū!!
+                                        Second Season" Original Soundtrack Vol.2</h6>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 px-5 text-start align-self-center refont">
+                            consists of two single CD volumes that contain all the music that appeared in Haikyū!!
+                            season one. Volume 1 was released on November 19, 2014 and Volume 2 was released on December
+                            17, 2014.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ------------------ -->
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/animehaikyu_com"
+                    role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-twitter" viewBox="0 0 16 16">
+                        <path
+                            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z" />
+                    </svg></a>
+
+            </section>
+            <!-- Section: Text -->
+            <section class="mb-4">
+                <p class="refont" >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+            <!-- Section: Text -->
+        </div>
+        <!-- Grid container -->
+        <a class="text-white" href="#top">back to top</a>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">Github</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.3.slim.js"
+    integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc=" crossorigin="anonymous"></script>
+
+<script>
+    const show = () => {
+        if ($("#showText").hasClass("d-none")) {
+            $("#showText").removeClass("d-none")
+        } else {
+            $("#showText").addClass("d-none")
+        }
+    }
+</script>
+<script>
+    const showw = () => {
+        if ($("#showTextt").hasClass("d-none")) {
+            $("#showTextt").removeClass("d-none")
+        } else {
+            $("#showTextt").addClass("d-none")
+        }
+    }
+</script>
+<script>
+    const showww = () => {
+        if ($("#showTexttt").hasClass("d-none")) {
+            $("#showTexttt").removeClass("d-none")
+        } else {
+            $("#showTexttt").addClass("d-none")
+        }
+    }
+</script>
+<script>
+    const showwww = () => {
+        if ($("#showTextttt").hasClass("d-none")) {
+            $("#showTextttt").removeClass("d-none")
+        } else {
+            $("#showTextttt").addClass("d-none")
+        }
+    }
+</script>
+<script>
+    const showwwww = () => {
+        if ($("#showTexttttt").hasClass("d-none")) {
+            $("#showTexttttt").removeClass("d-none")
+        } else {
+            $("#showTexttttt").addClass("d-none")
+        }
+    }
+</script>
+
+</html>
