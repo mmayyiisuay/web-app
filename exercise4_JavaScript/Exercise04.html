@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="maincontainer"></div>
+    <script>
+        const maincontainer = document.getElementById("maincontainer");
+
+        //header
+        const header = document.createElement("h2");
+        header.innerHTML = "Exercise 04: JavaScript&DOM";
+        maincontainer.appendChild(header);                                      //append header
+/*----------------------------------------------------------------------------------------------------*/
+
+        //button
+        let colors = ["pink", "lightcoral", "salmon", "lightyellow", "lightgreen", "skyblue", "royalblue"]
+        let text_color = ["rebeccapurple", "black", "yellow", "orange", "darkgreen", "darkyblue", "white"]
+        let div_date = document.createElement("div");
+        div_date.style.marginBottom = "2rem";
+        div_date.style.height = "10px";
+
+        let button = document.createElement("button");
+        button.textContent = "Click me to display date and time";
+        let worker = null;
+        let stopclock = false;
+
+        button.addEventListener("click", function () {
+            if (stopclock) {
+                worker.terminate();
+                worker = null;
+                stopclock = false;
+                button.style.position = "static";
+                button.style.top = "auto";
+                button.style.left = "auto";
+            } 
+            else {
+                if (worker == null) {
+                    worker = new Worker("worker.js");
+                    let i = 0; // Initialize an index variable for the colors array
+                    worker.onmessage = function (e) {
+                        button.style.position = "fixed";
+                        button.style.top = "0";
+                        button.style.right = "0";
+                        button.style.zIndex = "9999";
+                        button.textContent = e.data;
+                        button.style.backgroundColor = colors[i]; // Set the background color of the button
+                        i = (i + 1) % colors.length; // Update the index to cycle through the colors
+                    };
+                    worker.postMessage("start");
+                    stopclock = true;
+                    
+                }
+            }
+        });
+
+
+        div_date.appendChild(button);
+        maincontainer.appendChild(div_date);
+
+/*----------------------------------------------------------------------------------------------------*/
+
+        //info
+        let personalinfo_topics = document.createElement("a");
+        personalinfo_topics.innerHTML = "Personal Info";
+        personalinfo_topics.style.color = "pink";
+        personalinfo_topics.href = "#";
+        personalinfo_topics.onmouseover = () => {
+            personalinfo_topics.style.background = "yellow";
+            personalinfo_topics.style.color = "blue";
+        };
+        personalinfo_topics.onmouseout = () => {
+            personalinfo_topics.style.background = "transparent";
+            personalinfo_topics.style.color = "pink";
+        };
+
+        maincontainer.appendChild(personalinfo_topics);                         // append info
+
+        //toggle info
+        let list_info = document.createElement("ul");
+        list_info.hidden = true;
+        personalinfo_topics.onclick = () => {
+            list_info.hidden = !list_info.hidden;
+        };
+
+        //box list
+        let div_info = document.createElement("div");
+        div_info.style.webkitTextFillColor = "black";
+        div_info.appendChild(list_info);
+
+        let name = document.createElement("li");
+        name.innerHTML = "Natcha Suaysaard, id: 64010218";
+        list_info.appendChild(name);
+        let sub = document.createElement("li");
+        sub.innerHTML = "web application development";
+        list_info.appendChild(sub);
+        let semester = document.createElement("li");
+        semester.innerHTML = "2/2565";
+        list_info.appendChild(semester);
+
+        maincontainer.appendChild(div_info);                                    // append box list
+/*----------------------------------------------------------------------------------------------------*/
+        //snap topics
+        const snap = document.createElement("h1");
+        snap.innerHTML = "Snapshots";
+        maincontainer.appendChild(snap);                                        //append header
+
+        //list snap
+        let ul_snap = document.createElement("ul");
+        let name_snap = ["Fireworks", "crest", "action", "buffalo"]
+        let snapshots = document.createElement("img");
+        let img_snap = ["https://lumiere-a.akamaihd.net/v1/images/turningred-zoombackground01_c07b7cb2.jpeg"
+            , "https://www.wsav.com/wp-content/uploads/sites/75/2022/06/GettyImages-1344257205.jpg?w=1752&h=986&crop=1"
+            , "https://i.etsystatic.com/17257963/r/il/01ba88/1453179938/il_1588xN.1453179938_o6vs.jpg"
+            , "https://steemitimages.com/1280x0/http://randomc.net/image/Haikyuu/Haikyuu%20-%2017%20-%20Large%2006.jpg"
+            , "https://compote.slate.com/images/209ef3b5-7d52-432f-9b0f-b5b7208653aa.jpg?crop=3500%2C2333%2Cx0%2Cy0&width=1440"]
+
+        for (let i = 0; i < 4; i++) {
+            const list_snap = document.createElement("li");
+            list_snap.textContent = name_snap[i];
+            let a_snap = document.createElement("a");
+            a_snap.href = "#";
+            a_snap.appendChild(list_snap);
+            list_snap.style.webkitTextFillColor = "blue";
+            a_snap.style.webkitTextFillColor = "blue";
+            a_snap.style.color = "black";
+
+            a_snap.onclick = () => {
+                snapshots.src = img_snap[i + 1];
+            }
+
+            ul_snap.appendChild(a_snap);
+            maincontainer.appendChild(ul_snap);
+        };
+
+        snapshots.src = img_snap[0];
+        snapshots.setAttribute("width", "600");
+
+        maincontainer.appendChild(snapshots);
+/*----------------------------------------------------------------------------------------------------*/
+
+    </script>
+
+
+</body>
+
+</html>
